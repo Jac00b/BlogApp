@@ -1,12 +1,13 @@
 package misiuk.jakub.blog.Commentary;
 
+import misiuk.jakub.blog.AppControl.Menu;
 import misiuk.jakub.blog.Article.Article;
 import misiuk.jakub.blog.Article.ArticleStore;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CommentStore {
+public class CommentStore extends ArticleStore {
     Scanner scanner = new Scanner(System.in);
 
     private ArticleStore store =  ArticleStore.getInstance();
@@ -47,10 +48,10 @@ public class CommentStore {
     }
 
     public Comment createComment() {
-        System.out.println("Wprowadź id komentarza: ");
-        String commentId = scanner.nextLine();
         System.out.println("Podaj id artykułu do ktorego chcesz dodać komentarz:");
         String articleId = scanner.nextLine();
+        System.out.println("Wprowadź id komentarza: ");
+        String commentId = scanner.nextLine();
         System.out.println("Podaj nazwę użytkownika:");
         String username = scanner.nextLine();
         System.out.println("Wpisz komentarz:");
@@ -58,6 +59,14 @@ public class CommentStore {
 
         return new Comment(commentId, articleId, username, comment);
     }
-    
+
+    public void printCommentsById(String id) {
+
+        for (int i = 0; i < commentsList.size(); i++) {
+            if (commentsList.get(i).getArticleId().equals(id)) {
+                System.out.println(commentsList.get(i));
+            }
+        }
+    }
 }
 

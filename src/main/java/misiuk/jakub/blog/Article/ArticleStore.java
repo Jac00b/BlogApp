@@ -15,9 +15,9 @@ public class ArticleStore {
     public ArrayList<Article> articleList = new ArrayList<>();
     private static volatile ArticleStore instance;
 
-    public static ArticleStore getInstance(){
-        if (instance == null){
-            synchronized (ArticleStore.class){
+    public static ArticleStore getInstance() {
+        if (instance == null) {
+            synchronized (ArticleStore.class) {
                 instance = new ArticleStore();
             }
         }
@@ -46,12 +46,12 @@ public class ArticleStore {
             System.out.println("Wybierz id artykułu do usunięcia!");
             String id = scanner.nextLine();
             for (int i = 0; i < articleList.size(); i++) {
-                    if (articleList.get(i).getArticleId().equals(id)) {
-                        articleList.remove(articleList.get(i));
-                    } else {
-                        System.out.println("Brak artykułu o podanym id! Wybierz ponownie ");
-                        removeArticle();
-                    }
+                if (articleList.get(i).getArticleId().equals(id)) {
+                    articleList.remove(articleList.get(i));
+                } else {
+                    System.out.println("Brak artykułu o podanym id! Wybierz ponownie ");
+                    removeArticle();
+                }
             }
         } else {
             System.out.println("Brak artykułów w bazie!");
@@ -63,4 +63,12 @@ public class ArticleStore {
         return articleList.isEmpty();
     }
 
+    public void printArticlesById(String id) {
+        for (int i = 0; i < articleList.size(); i++) {
+            if (articleList.get(i).getArticleId().equals(id)) {
+                System.out.println(articleList.get(i));
+            }
+        }
+
+    }
 }

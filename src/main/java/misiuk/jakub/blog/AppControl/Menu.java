@@ -45,11 +45,22 @@ public class Menu {
             case PRINT_COMMENT:
                 printComment();
                 break;
+            case PRINT_ARTICLE_WITH_COMMENTS:
+                printArticlesWithComments();
+                break;
         }
 
     } while (option != Option.EXIT);
 
 
+    }
+
+    private void printArticlesWithComments() {
+        printArticles();
+        System.out.println("Podaj id artykułu do wyświetlenia");
+        String id = sc.nextLine();
+        articleStore.printArticlesById(id);
+        commentStore.printCommentsById(id);
     }
 
     private void printComment() {
@@ -62,6 +73,7 @@ public class Menu {
 
     private void addComment() {
         if (!articleStore.articleListIsEmpty()) {
+            articleStore.getArticleList();
             Comment comment = commentStore.createComment();
             commentStore.addComment(comment);
         } else {
@@ -69,9 +81,8 @@ public class Menu {
         }
     }
 
-    private void printArticles() {
+    public void printArticles() {
         articleStore.getArticleList();
-
 
     }
 
@@ -123,7 +134,8 @@ public class Menu {
         PRINT_ARTICLES(3, "Wyświetl artykuły"),
         ADD_COMMENT(4, "Dodaj komentarz do artykułu o podanym id"),
         REMOVE_COMMENT(5, "Usuń komentarz o podanym id"),
-        PRINT_COMMENT(6, "Wyświetl wszystkie komentarze");
+        PRINT_COMMENT(6, "Wyświetl wszystkie komentarze"),
+        PRINT_ARTICLE_WITH_COMMENTS(7, "Wyświetl artykuł o podanym id z komentarzami");
 
 
         private final int value;
