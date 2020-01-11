@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 public class Menu {
     Scanner sc = new Scanner(System.in);
-    ArticleStore articleStore = new ArticleStore();
-    ArticleCreation articleCreation = new ArticleCreation();
-    CommentStore commentStore = new CommentStore();
+    private ArticleStore articleStore = new ArticleStore();
+    private ArticleCreation articleCreation = new ArticleCreation();
+    private CommentStore commentStore = new CommentStore();
 
     public void controlLoop() {
 
@@ -105,16 +105,15 @@ public class Menu {
         return option;
     }
 
-    public void printLine(String text){
+    private void printLine(String text){
         System.out.println(text);
     }
 
-    public void printOptions() {
+    private void printOptions() {
         System.out.println("Wybierz opcję: ");
         for (Option value : Option.values()) {
             System.out.println(value);
         }
-
     }
 
     public enum Option {

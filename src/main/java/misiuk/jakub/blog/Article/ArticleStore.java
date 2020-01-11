@@ -1,14 +1,29 @@
 package misiuk.jakub.blog.Article;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class ArticleStore {
 
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
-    private ArrayList<Article> articleList = new ArrayList<>();
+    public ArrayList<Article> articleList = new ArrayList<>();
+    private static volatile ArticleStore instance;
+
+    public static ArticleStore getInstance(){
+        if (instance == null){
+            synchronized (ArticleStore.class){
+                instance = new ArticleStore();
+            }
+        }
+        return instance;
+    }
+
 
     public void getArticleList() {
         if (articleList.isEmpty()) {
@@ -31,12 +46,12 @@ public class ArticleStore {
             System.out.println("Wybierz id artykułu do usunięcia!");
             String id = scanner.nextLine();
             for (int i = 0; i < articleList.size(); i++) {
-                if (articleList.get(i).getArticleId().equals(id)) {
-                    articleList.remove(articleList.get(i));
-                } else {
-                    System.out.println("Brak artykułu o podanym id! Wybierz ponownie ");
-                    removeArticle();
-                }
+                    if (articleList.get(i).getArticleId().equals(id)) {
+                        articleList.remove(articleList.get(i));
+                    } else {
+                        System.out.println("Brak artykułu o podanym id! Wybierz ponownie ");
+                        removeArticle();
+                    }
             }
         } else {
             System.out.println("Brak artykułów w bazie!");
@@ -44,7 +59,8 @@ public class ArticleStore {
 
     }
 
-    public boolean articleListIsEmpty(){
+    public boolean articleListIsEmpty() {
         return articleList.isEmpty();
     }
+
 }

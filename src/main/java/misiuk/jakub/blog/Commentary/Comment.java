@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class Comment {
 
-    private String CommentId;
+    private String commentId;
     private String articleId;
     private String username;
     private String text;
@@ -18,7 +18,7 @@ public class Comment {
 
     @Override
     public String toString() {
-        return "Komentarz do artykułu o id " +articleId+" dodany przez " +
+        return "Komentarz o id " +commentId+ " do artykułu o id " +articleId+" dodany przez " +
                 "użytkownika: " + username +
                 "(" + text+").";
 

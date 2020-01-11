@@ -1,6 +1,7 @@
 package misiuk.jakub.blog.Commentary;
 
 import misiuk.jakub.blog.Article.Article;
+import misiuk.jakub.blog.Article.ArticleStore;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,11 +9,14 @@ import java.util.Scanner;
 public class CommentStore {
     Scanner scanner = new Scanner(System.in);
 
+    private ArticleStore store =  ArticleStore.getInstance();
+
     private ArrayList<Comment> commentsList = new ArrayList<>();
+
 
     public void printComments() {
         if (commentsList.isEmpty()) {
-            System.out.println("Brak artykułów w bazie");
+            System.out.println("Brak komentarzy w bazie");
         } else {
             for (Comment comment : commentsList) {
                 System.out.println(comment);
@@ -54,6 +58,6 @@ public class CommentStore {
 
         return new Comment(commentId, articleId, username, comment);
     }
-
+    
 }
 
