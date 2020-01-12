@@ -86,10 +86,10 @@ public class Newsletter implements Observable, Observer {
     }
 
 
-    public void send() {
+    private void send() {
 
         for (User observer : observers) {
-            System.out.println("Na email " + observer.getEmail() + " został wysłany newsletter:::" + SUBJECT);
+            System.out.println("Na email " + observer.getEmail() + " został wysłany newsletter:::" + SUBJECT +" od " + FROM);
         }
     }
 }
