@@ -1,16 +1,11 @@
 package misiuk.jakub.blog.Commentary;
 
-import misiuk.jakub.blog.AppControl.Menu;
-import misiuk.jakub.blog.Article.Article;
-import misiuk.jakub.blog.Article.ArticleStore;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class CommentStore extends ArticleStore {
+public class CommentStore {
     Scanner scanner = new Scanner(System.in);
 
-    private ArticleStore store =  ArticleStore.getInstance();
 
     private ArrayList<Comment> commentsList = new ArrayList<>();
 
@@ -33,9 +28,9 @@ public class CommentStore extends ArticleStore {
         if (!commentsList.isEmpty()) {
             printComments();
             System.out.println("Wybierz id komentarza do usunięcia!");
-            String id = scanner.nextLine();
+            int id = scanner.nextInt();
             for (int i = 0; i < commentsList.size(); i++) {
-                if (commentsList.get(i).getCommentId().equals(id)) {
+                if (commentsList.get(i).getCommentId() == id) {
                     commentsList.remove(commentsList.get(i));
                 } else {
                     System.out.println("Brak komentarza o podanym id! Wybierz ponownie ");
@@ -48,22 +43,26 @@ public class CommentStore extends ArticleStore {
     }
 
     public Comment createComment() {
-        System.out.println("Podaj id artykułu do ktorego chcesz dodać komentarz:");
-        String articleId = scanner.nextLine();
-        System.out.println("Wprowadź id komentarza: ");
-        String commentId = scanner.nextLine();
+
         System.out.println("Podaj nazwę użytkownika:");
         String username = scanner.nextLine();
         System.out.println("Wpisz komentarz:");
         String comment = scanner.nextLine();
+        System.out.println("Podaj id artykułu do ktorego chcesz dodać komentarz:");
+        int articleId = scanner.nextInt();
 
+        int commentId = getNewId();
         return new Comment(commentId, articleId, username, comment);
     }
 
-    public void printCommentsById(String id) {
+    private int getNewId() {
+        return commentsList.size();
+    }
+
+    public void printCommentsById(int id) {
 
         for (int i = 0; i < commentsList.size(); i++) {
-            if (commentsList.get(i).getArticleId().equals(id)) {
+            if (commentsList.get(i).getArticleId() == id) {
                 System.out.println(commentsList.get(i));
             }
         }

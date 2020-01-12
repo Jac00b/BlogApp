@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 @AllArgsConstructor
@@ -13,20 +14,24 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 public class Article {
 
-    private String articleId;
+    private int articleId;
     private String topic;
     private String content;
-    private LocalDate publicationDate;
-    private LocalDate creationDate;
-    private LocalDate updateDate;
+    private LocalDateTime publicationDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime updateDate;
 
     @Override
     public String toString() {
         return "Artykuł o id " + articleId +"-" +
                 "Temat : " + topic +
                 ", Treść: " + content +
-                ", Data publikacji: " + publicationDate +
-                ", Data utworzenia: " + creationDate +
-                ", Data modyfikacji: " + updateDate;
+                ", Data publikacji: " + showTime(publicationDate) +
+                ", Data utworzenia: " + showTime(creationDate) +
+                ", Data modyfikacji: " + showTime(updateDate);
+    }
+
+    public String showTime(LocalDateTime localDateTime){
+        return localDateTime.format(DateTimeFormatter.ofPattern("DD-MM-YYYY HH:mm:ss"));
     }
 }

@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import javax.swing.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -15,14 +17,36 @@ public class ArticleStore {
     public ArrayList<Article> articleList = new ArrayList<>();
     private static volatile ArticleStore instance;
 
-    public static ArticleStore getInstance() {
-        if (instance == null) {
-            synchronized (ArticleStore.class) {
-                instance = new ArticleStore();
-            }
-        }
-        return instance;
+
+
+    public void close() {
+        scanner.close();
     }
+
+    public int getInt() {
+        try {
+            return scanner.nextInt();
+
+        } finally {
+            scanner.nextLine();
+        }
+    }
+
+
+    public Article createArticle() throws DateTimeParseException {
+            System.out.println("Podaj temat: ");
+            String topic = scanner.nextLine();
+            System.out.println("Wpisz treść artykułu: ");
+            String content = scanner.nextLine();
+            int articleId = getNewId();
+            return new Article(articleId, topic, content, LocalDateTime.now(), LocalDateTime.now(), LocalDateTime.now());
+    }
+
+    public int getNewId(){
+        int id = articleList.size();
+        return id;
+    }
+
 
 
     public void getArticleList() {
@@ -44,9 +68,9 @@ public class ArticleStore {
         if (!articleList.isEmpty()) {
             getArticleList();
             System.out.println("Wybierz id artykułu do usunięcia!");
-            String id = scanner.nextLine();
+            int id = scanner.nextInt();
             for (int i = 0; i < articleList.size(); i++) {
-                if (articleList.get(i).getArticleId().equals(id)) {
+                if (articleList.get(i).getArticleId()==id) {
                     articleList.remove(articleList.get(i));
                 } else {
                     System.out.println("Brak artykułu o podanym id! Wybierz ponownie ");
@@ -63,9 +87,9 @@ public class ArticleStore {
         return articleList.isEmpty();
     }
 
-    public void printArticlesById(String id) {
+    public void printArticlesById(int id) {
         for (int i = 0; i < articleList.size(); i++) {
-            if (articleList.get(i).getArticleId().equals(id)) {
+            if (articleList.get(i).getArticleId()==id) {
                 System.out.println(articleList.get(i));
             }
         }

@@ -10,8 +10,8 @@ import lombok.Setter;
 @Setter
 public class Comment {
 
-    private String commentId;
-    private String articleId;
+    private int commentId;
+    private int articleId;
     private String username;
     private String text;
 
