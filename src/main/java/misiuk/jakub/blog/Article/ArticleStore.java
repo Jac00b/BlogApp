@@ -2,13 +2,9 @@ package misiuk.jakub.blog.Article;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-
-import javax.swing.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 @NoArgsConstructor(access = AccessLevel.PUBLIC)
 public class ArticleStore {
 
@@ -33,7 +29,7 @@ public class ArticleStore {
     }
 
 
-    public Article createArticle() throws DateTimeParseException {
+    public Article createArticle(){
             System.out.println("Podaj temat: ");
             String topic = scanner.nextLine();
             System.out.println("Wpisz treść artykułu: ");

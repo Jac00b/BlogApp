@@ -1,17 +1,11 @@
 package misiuk.jakub.blog.Newsletter;
 
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import java.util.ArrayList;
-import java.util.Properties;
 import java.util.Scanner;
 
 public class Newsletter implements Observable, Observer {
 
-
     Scanner scanner = new Scanner(System.in);
-
 
     private ArrayList<User> observers = new ArrayList<>();
 
@@ -89,7 +83,7 @@ public class Newsletter implements Observable, Observer {
     private void send() {
 
         for (User observer : observers) {
-            System.out.println("Na email " + observer.getEmail() + " został wysłany newsletter:::" + SUBJECT +" od " + FROM);
+            System.out.println("Na email " + observer.getEmail() + " został wysłany newsletter:::" + SUBJECT + " od " + FROM);
         }
     }
 }
