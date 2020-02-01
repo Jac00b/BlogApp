@@ -71,11 +71,13 @@ public class ArticleStore {
               if (article.getArticleId() == id) {
                   System.out.println("Wpisz nową treść artykułu: ");
                   String newContent = scanner.nextLine();
-                  
+
                   article.setContent(newContent);
                   System.out.println("Wpisz nowy tytuł: ");
                   String title = scanner.nextLine();
                   article.setTopic(title);
+
+                  article.setUpdateDate(LocalDateTime.now());
 
 
               } else {

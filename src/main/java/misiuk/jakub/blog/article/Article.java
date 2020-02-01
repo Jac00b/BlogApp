@@ -31,6 +31,6 @@ public class Article {
     }
 
     public String showTime(LocalDateTime localDateTime){
-        return localDateTime.format(DateTimeFormatter.ofPattern("DD-MM-YYYY HH:mm:ss"));
+        return localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-YYYY HH:mm:ss"));
     }
 }
