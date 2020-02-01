@@ -1,4 +1,4 @@
-package misiuk.jakub.blog.Newsletter;
+package misiuk.jakub.blog.newsletter;
 
 import java.util.ArrayList;
 import java.util.Scanner;

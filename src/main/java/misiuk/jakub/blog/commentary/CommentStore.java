@@ -1,4 +1,4 @@
-package misiuk.jakub.blog.Commentary;
+package misiuk.jakub.blog.commentary;
 
 import java.util.ArrayList;
 import java.util.Scanner;

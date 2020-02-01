@@ -1,6 +1,4 @@
-package misiuk.jakub.blog.AppControl;
-
-import java.time.LocalDateTime;
+package misiuk.jakub.blog.appControl;
 
 
 public class App {

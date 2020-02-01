@@ -1,8 +1,7 @@
-package misiuk.jakub.blog.Article;
+package misiuk.jakub.blog.article;
 
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

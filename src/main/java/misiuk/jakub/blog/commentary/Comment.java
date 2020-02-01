@@ -1,4 +1,4 @@
-package misiuk.jakub.blog.Commentary;
+package misiuk.jakub.blog.commentary;
 
 
 import lombok.AllArgsConstructor;

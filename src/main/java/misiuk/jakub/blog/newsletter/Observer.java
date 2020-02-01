@@ -1,4 +1,4 @@
-package misiuk.jakub.blog.Newsletter;
+package misiuk.jakub.blog.newsletter;
 
 public interface Observer {
 

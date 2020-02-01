@@ -1,12 +1,12 @@
-package misiuk.jakub.blog.AppControl;
+package misiuk.jakub.blog.appControl;
 
-import misiuk.jakub.blog.Article.Article;
-import misiuk.jakub.blog.Article.ArticleStore;
-import misiuk.jakub.blog.Commentary.Comment;
-import misiuk.jakub.blog.Commentary.CommentStore;
-import misiuk.jakub.blog.Exceptions.NoSuchOptionException;
-import misiuk.jakub.blog.Newsletter.Newsletter;
-import misiuk.jakub.blog.Newsletter.User;
+import misiuk.jakub.blog.article.Article;
+import misiuk.jakub.blog.article.ArticleStore;
+import misiuk.jakub.blog.commentary.Comment;
+import misiuk.jakub.blog.commentary.CommentStore;
+import misiuk.jakub.blog.exceptions.NoSuchOptionException;
+import misiuk.jakub.blog.newsletter.Newsletter;
+import misiuk.jakub.blog.newsletter.User;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -35,6 +35,9 @@ public class Menu {
                 break;
             case REMOVE_ARTICLE:
                 removeArticle();
+                break;
+            case EDIT_ARTICLE:
+                editArticle();
                 break;
             case PRINT_ARTICLES:
                 printArticles();
@@ -65,6 +68,10 @@ public class Menu {
     } while (option != Option.EXIT);
 
 
+    }
+
+    private void editArticle() {
+        articleStore.editArticle();
     }
 
     private void printSubscribers() {
@@ -183,13 +190,15 @@ public class Menu {
         ADD_ARTICLE(1, "UTWÓRZ ARTYKUŁ                               *"),
         REMOVE_ARTICLE(2, "USUŃ ARTYKUŁ                                 *"),
         PRINT_ARTICLES(3, "WYŚWIETL ARTYKUŁY                            *"),
-        ADD_COMMENT(4, "DODAJ KOMENTARZ DO ARTYKUŁU O PODANYM ID     *"),
-        REMOVE_COMMENT(5, "USUŃ KOMENTARZ O PODANYM ID                  *"),
-        PRINT_COMMENT(6, "WYŚWIETL WSZYSTKIE KOMENTARZE                *"),
-        PRINT_ARTICLE_WITH_COMMENTS(7, "WYŚWIETL ARTYKUŁ O PODANYM ID Z KOMENTARZAMI *"),
-        ADD_SUBSCRIBER(8, "DODAJ UŻYTKOWNIKA DO NEWSLETTERA             *"),
-        REMOVE_SUBSCRIBER(9, "USUŃ UŻYTKOWNIKA Z NEWSLETTERA               *"),
-        PRINT_SUBSCRIBERS(10, "WYŚWIETL WSZYSTKICH UŻYTKOWNIKÓW W BAZIE    *");
+        EDIT_ARTICLE(4, "EDYTUJ ARTYKUŁ"),
+        ADD_COMMENT(5, "DODAJ KOMENTARZ DO ARTYKUŁU O PODANYM ID     *"),
+        REMOVE_COMMENT(6, "USUŃ KOMENTARZ O PODANYM ID                  *"),
+        PRINT_COMMENT(7, "WYŚWIETL WSZYSTKIE KOMENTARZE                *"),
+        PRINT_ARTICLE_WITH_COMMENTS(8, "WYŚWIETL ARTYKUŁ O PODANYM ID Z KOMENTARZAMI *"),
+        ADD_SUBSCRIBER(9, "DODAJ UŻYTKOWNIKA DO NEWSLETTERA             *"),
+        REMOVE_SUBSCRIBER(10, "USUŃ UŻYTKOWNIKA Z NEWSLETTERA               *"),
+        PRINT_SUBSCRIBERS(11, "WYŚWIETL WSZYSTKICH UŻYTKOWNIKÓW W BAZIE    *");
+
 
 
 
