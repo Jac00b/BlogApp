@@ -1,1 +1,1 @@
-BlogApp in JAVA EE, withour frontEnd
+BlogConsoleApp in JAVA :)
