@@ -1,1 +1,1 @@
-BlogApp
+BlogApp in JAVA EE, withour frontEnd
